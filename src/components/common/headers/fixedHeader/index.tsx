@@ -21,11 +21,11 @@ type Props = {
 export default function FixedHeader({
   toggleSideMenu = () => {},
   navigation = [
-    { label: "Home", href: "/" },
+    { label: "Home", href: "" },
     { label: "About", href: "/about-us" },
     { label: "Projects", href: "/projects" },
     { label: "Skills", href: "/skills" },
-    { label: "contact", href: "/contact" },
+    { label: "contact", href: "/contact-us" },
   ],
   logoSrc = "/images/logo/eme-logo.svg",
   onOpenModal,

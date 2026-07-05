@@ -140,7 +140,7 @@ export default function Contact() {
         {/* button to main contact page */}
         <div className="pb--40 justify-center flex items-center">
           <Link
-            href="/contact"
+            href="/contact-us"
             className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
           >
             Say Hello !

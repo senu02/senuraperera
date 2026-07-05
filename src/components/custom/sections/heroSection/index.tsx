@@ -62,14 +62,14 @@ export default function PortfolioHero() {
               className="flex flex-wrap gap-[16px]"
             >
               <a
-                href="#projects"
+                href="/projects"
                 className="inline-flex items-center justify-center px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
               >
                 View Projects
               </a>
 
               <a
-                href="#contact"
+                href="/contact-us"
                 className="inline-flex items-center justify-center px--30 py--15 rounded-[14px] border border-white/20 bg-white/5 text-white font-semibold hover:bg-white/10 transition"
               >
                 Contact Me
@@ -93,7 +93,7 @@ export default function PortfolioHero() {
 
               <div className="relative w-full h-full rounded-[30px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(37,99,235,0.25)]">
                 <Image
-                  src="/senuraperera/images/profile.png"
+                  src="/images/profile.png"
                   alt="Senura Perera"
                   fill
                   priority
