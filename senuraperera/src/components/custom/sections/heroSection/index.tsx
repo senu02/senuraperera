@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function PortfolioHero() {
   return (
-    <section className="relative overflow-hidden bg-black text-white  py--80 min-h-[100vh] lg:min-h-screen container--90">
+    <section className="relative overflow-hidden bg-black text-white pt--250 min-h-screen container--80">
       {/* background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_75%_45%,rgba(37,99,235,0.35),transparent_30%),radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.06),transparent_20%)]" />
@@ -13,7 +13,7 @@ export default function PortfolioHero() {
       </div>
 
       <div className=" relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[50px] lg:gap-[calc(80/1920*100vw)] min-h-[85vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[50px] lg:gap-[calc(80/1920*100vw)]">
           {/* left */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
@@ -93,7 +93,7 @@ export default function PortfolioHero() {
 
               <div className="relative w-full h-full rounded-[30px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(37,99,235,0.25)]">
                 <Image
-                  src="/images/home/senura.jpg"
+                  src="/images/home/profile.jpeg"
                   alt="Senura Perera"
                   fill
                   priority

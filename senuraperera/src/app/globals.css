@@ -287,6 +287,9 @@
 
   /* padding top */
 
+  .pt--250 {
+    @apply pt-[100px] lg:pt-[calc(250/1920*100vw)];
+  }
   .pt--200 {
     @apply pt-[100px] lg:pt-[calc(200/1920*100vw)];
   }
@@ -884,7 +887,7 @@
     @apply gap-[10px] md:gap-[10px] lg:gap-[calc(15/1920*100vw)];
   }
 
-  .gap--5{
+  .gap--5 {
     @apply gap-[10px] md:gap-[10px] lg:gap-[calc(20/1920*100vw)];
   }
 

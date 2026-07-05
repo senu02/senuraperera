@@ -20,7 +20,7 @@ type Props = {
 export default function TopHeader({
   toggleSideMenu = () => {},
   navigation = [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/" },
     { label: "About", href: "/about-us" },
     { label: "Projects", href: "/projects" },
     { label: "Skills", href: "/skills" },
