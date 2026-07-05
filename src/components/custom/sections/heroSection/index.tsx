@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function PortfolioHero() {
   return (
-    <section className="relative overflow-hidden bg-black text-white pt--250 min-h-[75vh] md:min-h-[85vh] lg:min-h-screen container--80">
+    <section className="relative overflow-hidden bg-black text-white pt--250 min-h-[75vh] md:min-h-screen lg:min-h-screen container--80">
       {/* background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_75%_45%,rgba(37,99,235,0.35),transparent_30%),radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.06),transparent_20%)]" />
@@ -93,7 +93,7 @@ export default function PortfolioHero() {
 
               <div className="relative w-full h-full rounded-[30px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(37,99,235,0.25)]">
                 <Image
-                  src="/profile.png"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/siteLogo.svg`}
                   alt="Senura Perera"
                   fill
                   priority
