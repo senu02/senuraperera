@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import profile from "@/public/profile.jpeg";
 
 export default function PortfolioHero() {
   return (
@@ -94,7 +93,7 @@ export default function PortfolioHero() {
 
               <div className="relative w-full h-full rounded-[30px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(37,99,235,0.25)]">
                 <Image
-                  src={profile}
+                  src="/profile.jpeg"
                   alt="Senura Perera"
                   fill
                   priority
