@@ -369,7 +369,7 @@
   }
 
   .pb--100 {
-    @apply pb-[40px] lg:pb-[calc(100/1920*100vw)];
+    @apply pb-[60px] lg:pb-[calc(100/1920*100vw)];
   }
 
   .pb--80 {
@@ -410,7 +410,7 @@
   }
 
   .py--100 {
-    @apply py-[40px] lg:py-[calc(100/1920*100vw)];
+    @apply py-[60px] lg:py-[calc(100/1920*100vw)];
   }
 
   .py--80 {
