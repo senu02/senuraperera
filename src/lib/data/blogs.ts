@@ -10,7 +10,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "getting-started-with-nextjs",
+    slug: "/getting-started-with-nextjs",
     title: "Getting Started with Next.js 15",
     description:
       "A practical walkthrough of setting up a modern Next.js project — routing, server components, and the App Router patterns I use in real projects, explained from the ground up for developers making the jump from plain React.",
