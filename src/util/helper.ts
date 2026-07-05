@@ -1,6 +1,8 @@
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const getImageSrc = (src: string | undefined | null): string => {
   const baseUrl = process.env.NEXT_PUBLIC_ASSETS_URL || "";
-  const fallbackImage = "/images/loaders/fallback.avif";
+  const fallbackImage = `${BASE_PATH}/images/loaders/fallback.avif`;
 
   if (!src || src === "undefined" || src === "null") {
     return fallbackImage;
@@ -11,7 +13,7 @@ export const getImageSrc = (src: string | undefined | null): string => {
   }
 
   if (src.startsWith("/images")) {
-    return src;
+    return `${BASE_PATH}${src}`; // ✅ now prefixed
   }
 
   const cleanSrc = src.startsWith("/") ? src.slice(1) : src;
@@ -80,7 +82,6 @@ export function resolveButtonHref(btn: ButtonHrefInput): string {
 
   return "#";
 }
-
 
 export const getYoutubeEmbedUrl = (url: string) => {
   try {
