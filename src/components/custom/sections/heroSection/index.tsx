@@ -92,12 +92,12 @@ export default function PortfolioHero() {
               <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-3xl scale-110" />
 
               <div className="relative w-full h-full rounded-[30px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(37,99,235,0.25)]">
-                <Image
+                <img
                   src="/images/profile.png"
                   alt="Senura Perera"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover object-contain w-full h-full"
                 />
               </div>
             </motion.div>
