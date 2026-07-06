@@ -95,8 +95,6 @@ export default function PortfolioHero() {
                 <img
                   src="/images/profile.png"
                   alt="Senura Perera"
-                  fill
-                  priority
                   className="object-cover object-contain w-full h-full"
                 />
               </div>
