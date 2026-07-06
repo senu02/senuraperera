@@ -1,11 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export",
-  basePath: "/senuraperera",
-  assetPrefix: "/senuraperera/",
-  images: {
-    unoptimized: true,
-  },
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
