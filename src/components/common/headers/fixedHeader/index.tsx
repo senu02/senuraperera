@@ -27,17 +27,17 @@ export default function FixedHeader({
     { label: "Skills", href: "/skills" },
     { label: "contact", href: "/contact-us" },
   ],
-  logoSrc = "/images/eme-logo.svg",
+  logoSrc = "/images/senuralogo.jpg",
   onOpenModal,
 }: Props) {
   const pathname = usePathname();
 
   return (
-    <div className="container--90 py--20">
+    <div className="container--80 py--20">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}>
-          <Link href="/" title="eme+">
+          <Link href="/" title="Senura Perera">
             <SafeImage
               src={logoSrc}
               alt="eMe+"
@@ -89,28 +89,30 @@ export default function FixedHeader({
           </nav>
 
           {/* Desktop CTA — hidden on mobile/tablet */}
-          <div className="hidden lg:block">
+          {/* <div className="hidden lg:block">
             <SecondaryButton
-              text="REQUEST A PROPOSAL"
+              text="REQUEST A Meeting"
               href="/request"
               variant="default"
             />
-          </div>
+          </div> */}
 
           {/* Hamburger — always visible */}
-          <motion.button
-            onClick={toggleSideMenu}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            <img
-              src="/images/hamburgerMenu.svg"
-              alt="Menu"
-              className="w-[31.5px] h-[25px] lg:w-[calc(35/1920*100vw)] lg:h-[calc(25/1920*100vw)]"
-            />
-          </motion.button>
+          <div className="lg:hidden">
+            <motion.button
+              onClick={toggleSideMenu}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              <img
+                src="/images/hamburgerMenu.svg"
+                alt="Menu"
+                className="w-[31.5px] h-[25px] lg:w-[calc(35/1920*100vw)] lg:h-[calc(25/1920*100vw)]"
+              />
+            </motion.button>
+          </div>
         </div>
       </div>
     </div>

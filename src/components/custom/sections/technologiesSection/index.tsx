@@ -19,7 +19,7 @@ const techCategories = [
   {
     icon: Layers,
     title: "Frameworks & Libraries",
-    items: ["React Js", "Next Js", "Node.js", "Spring Boot", "Tailwind CSS"],
+    items: ["React Js", "Next Js",  "Spring Boot", "Tailwind CSS"],
   },
   {
     icon: Database,
@@ -74,7 +74,7 @@ export default function Technologies() {
         </motion.div>
 
         {/* categories grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space--30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch space--30">
           {techCategories.map((category, index) => {
             const Icon = category.icon;
             return (

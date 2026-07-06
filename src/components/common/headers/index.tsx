@@ -94,7 +94,7 @@ export default function HeaderClient({
     <>
       {/* ── Header bar ── */}
       {!isRoot ? (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-raisin-black">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-black">
           <FixedHeader
             toggleSideMenu={toggleMenu}
             navigation={navigationData}
@@ -124,7 +124,7 @@ export default function HeaderClient({
           <AnimatePresence>
             {scrolled && (
               <motion.header
-                className="fixed top-0 left-0 right-0 z-50 bg-raisin-black shadow-lg backdrop-blur-sm"
+                className="fixed top-0 left-0 right-0 z-50 bg-black shadow-lg backdrop-blur-sm"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -143,13 +143,13 @@ export default function HeaderClient({
       )}
 
       {/* ── Hamburger menus — always rendered on ALL pages ── */}
-      <div className="hidden lg:block">
+      {/* <div className="hidden lg:block">
         <HamburgerMenu
           isOpen={menuOpen}
           onClose={closeMenu}
           logoSrc={logoSrc}
         />
-      </div>
+      </div> */}
 
       <div className="lg:hidden">
         <HamburgerMenuMobile

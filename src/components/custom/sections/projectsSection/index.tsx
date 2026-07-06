@@ -1,38 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A full-stack online store with product management, cart, and secure checkout built using Next.js and Stripe.",
-    image: "/images/projects/project-1.jpg",
-    tags: ["Next.js", "TypeScript", "Stripe"],
-    link: "/projects/e-commerce-platform",
-  },
-  {
-    title: "Portfolio CMS Dashboard",
-    description:
-      "An admin dashboard for managing portfolio content dynamically, with authentication and role-based access.",
-    image: "/images/projects/project-2.jpg",
-    tags: ["React", "Node.js", "MongoDB"],
-    link: "/projects/portfolio-cms-dashboard",
-  },
-  {
-    title: "Real-Time Chat App",
-    description:
-      "A messaging application with real-time updates, typing indicators, and media sharing using WebSockets.",
-    image: "/images/projects/project-3.jpg",
-    tags: ["Socket.io", "Express", "React"],
-    link: "/projects/real-time-chat-app",
-  },
-];
+import { ArrowRight } from "lucide-react";
+import ProjectCard from "@/components/common/cards/projectCard";
+import { projects } from "@/lib/data/projects";
 
 export default function Projects() {
+  const featuredProjects = projects.slice(0, 3);
+
   return (
     <section className="relative overflow-hidden bg-black text-white pb--100 container--80">
       {/* background glow, matches hero section */}
@@ -63,58 +39,9 @@ export default function Projects() {
         </motion.div>
 
         {/* projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center space--30">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                ease: "easeOut",
-              }}
-              whileHover={{ y: -8 }}
-              className="group relative flex flex-col rounded-[20px] border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden hover:border-blue-500/40 transition-colors"
-            >
-              <Link href={project.link} className="flex flex-col h-full">
-                {/* image */}
-                <div className="relative w-full h-[200px] overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-                  <div className="absolute top-[14px] right-[14px] flex items-center justify-center w-[36px] h-[36px] rounded-full bg-blue-600/90 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="w-[18px] h-[18px] text-white" />
-                  </div>
-                </div>
-
-                {/* content */}
-                <div className="flex flex-col flex-1 space--15 px--40 py--40">
-                  <h3 className="text--22 font-semibold">{project.title}</h3>
-
-                  <p className="text--16 text-gray-400 leading-relaxed flex-1">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap space--10 ">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text--13 px--10 py--5 rounded-full border border-white/10 bg-white/5 text-gray-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center items-stretch justify-center space--30">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
 
@@ -128,7 +55,7 @@ export default function Projects() {
         >
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
+            className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-800 transition-colors duration-300"
           >
             View All Projects
             <ArrowRight className="w-[18px] h-[18px] transition-transform group-hover:translate-x-1" />

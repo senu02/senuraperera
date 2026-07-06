@@ -10,7 +10,7 @@ interface SafeImageProps extends Omit<ImageProps, "src"> {
 
 export default function SafeImage({
   src,
-  fallback = "/images/loaders/fallback.jpg",
+  fallback = "/images/images/senuralogo.jpg",
   ...props
 }: SafeImageProps) {
   const [imgSrc, setImgSrc] = useState(getImageSrc(src));

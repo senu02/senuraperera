@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: "Online Pharmacy",
     description:
       "A user-friendly online pharmacy platform enabling seamless prescription uploads, secure medication ordering, convenient payment options, direct customer support, and detailed user reviews.",
-    image: "/images/projects/online-pharmacy.jpg",
+    image: "/images/onlinepharmacy.png",
     tags: ["HTML", "CSS", "PHP"],
     type: "Group Project",
     featured: true,
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     title: "Micro Service Center",
     description:
       "A vehicle service management system built as a website for a vehicle service center, covering bookings and service tracking.",
-    image: "/images/projects/micro-service-center.jpg",
+    image: "/images/micro-service-center.png",
     tags: ["React Js", "HTML", "CSS", "JavaScript", "Figma"],
     type: "Group Project",
     githubUrl: "https://github.com/senu02/MicroService.git",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     title: "EcoBin: Smart Waste Management",
     description:
       "A smart waste management website that promotes efficient waste disposal and recycling for communities.",
-    image: "/images/projects/ecobin.jpg",
+    image: "/images/ecobin.png",
     tags: ["React Js", "Node.js", "Spring Boot", "JavaScript", "Tailwind CSS"],
     type: "Group Project",
     githubUrl: "https://github.com/senu02/EcoBin.git",

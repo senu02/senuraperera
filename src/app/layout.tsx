@@ -4,6 +4,7 @@ import "./globals.css";
 import HeaderClient from "@/components/common/headers";
 // import Footer from "@/components/common/footer";
 import PageScrollWrapper from "@/components/common/wrappers/pageScrollWrapper";
+import Footer from "@/components/common/footer";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className={`${jost.variable} ${oswald.variable} antialiased`}>
         <HeaderClient />
         <PageScrollWrapper>{children}</PageScrollWrapper>
+        {/* <Footer /> */}
       </body>
     </html>
   );

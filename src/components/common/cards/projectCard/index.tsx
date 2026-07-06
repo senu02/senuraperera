@@ -31,10 +31,10 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       whileHover={{ y: -8 }}
-      className="group relative flex flex-col rounded-[20px] border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden hover:border-blue-500/40 transition-colors"
+      className="group relative flex flex-col h-full rounded-[20px] border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden hover:border-blue-500/40 transition-colors"
     >
       {/* image */}
-      <div className="relative w-full h-[200px] overflow-hidden">
+      <div className="relative w-full h-[300px] overflow-hidden">
         <Image
           src={image}
           alt={title}
@@ -43,7 +43,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-        <span className="absolute top-[14px] left-[14px] text--12 uppercase tracking-[0.1em] px--12 py--4 rounded-full bg-black/60 border border-white/10 text-gray-300">
+        <span className="absolute top-[14px] left-[14px] text--12 uppercase tracking-[0.1em] px--10 py--5 rounded-full bg-black/80 border border-white/10 text-white">
           {type}
         </span>
 

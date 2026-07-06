@@ -26,7 +26,7 @@ export default function TopHeader({
     { label: "Skills", href: "/skills" },
     { label: "contact", href: "/contact-us" },
   ],
-  logoSrc = "/images/siteLogo.svg",
+  logoSrc = "/images/senuralogo.jpg",
 }: Props) {
   const pathname = usePathname();
 
@@ -35,7 +35,7 @@ export default function TopHeader({
       <div className="flex items-center justify-between">
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}>
-          <Link href="/" title="eMe+">
+          <Link href="/" title="Senura Perera">
             <SafeImage
               src={logoSrc}
               alt="eMe+"
@@ -43,7 +43,7 @@ export default function TopHeader({
               height={44}
               loading="eager"
               fetchPriority="high"
-              className="w-[100px] h-[40px] lg:w-[calc(130/1920*100vw)] lg:h-[calc(58/1920*100vw)]"
+              className="w-[100px] h-[40px] lg:w-[calc(120/1920*100vw)] lg:h-[calc(50/1920*100vw)]"
             />
           </Link>
         </motion.div>
@@ -87,19 +87,21 @@ export default function TopHeader({
           </nav>
 
           {/* Hamburger — always visible */}
-          <motion.button
-            onClick={toggleSideMenu}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            <img
-              src="/images/hamburgerMenu.svg"
-              alt="Menu"
-              className="w-[32px] h-[25px] lg:w-[calc(35/1920*100vw)] lg:h-[calc(25/1920*100vw)]"
-            />
-          </motion.button>
+          <div className="lg:hidden">
+            <motion.button
+              onClick={toggleSideMenu}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              <img
+                src="/images/hamburgerMenu.svg"
+                alt="Menu"
+                className="w-[32px] h-[25px] lg:w-[calc(35/1920*100vw)] lg:h-[calc(25/1920*100vw)]"
+              />
+            </motion.button>
+          </div>
         </div>
       </div>
     </div>

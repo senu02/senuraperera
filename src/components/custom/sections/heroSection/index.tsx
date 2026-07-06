@@ -13,13 +13,13 @@ export default function PortfolioHero() {
       </div>
 
       <div className=" relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[50px] lg:gap-[calc(80/1920*100vw)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center space--60">
           {/* left */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col space--30"
+            className="flex flex-col space--30 lg:text-left text-center"
           >
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -59,18 +59,18 @@ export default function PortfolioHero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-wrap gap-[16px]"
+              className="flex flex-wrap space--25 justify-center lg:justify-start"
             >
               <a
                 href="/projects"
-                className="inline-flex items-center justify-center px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
+                className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-800 transition-colors duration-300"
               >
                 View Projects
               </a>
 
               <a
                 href="/contact-us"
-                className="inline-flex items-center justify-center px--30 py--15 rounded-[14px] border border-white/20 bg-white/5 text-white font-semibold hover:bg-white/10 transition"
+                className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] border border-white/20 bg-white/5 text-white font-semibold hover:bg-white/20 transition-colors duration-300"
               >
                 Contact Me
               </a>
@@ -92,9 +92,11 @@ export default function PortfolioHero() {
               <div className="absolute inset-0 rounded-full bg-blue-600/20 blur-3xl scale-110" />
 
               <div className="relative w-full h-full rounded-[30px] overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(37,99,235,0.25)]">
-                <img
+                <Image
                   src="/images/profile.png"
                   alt="Senura Perera"
+                  width={520}
+                  height={520}
                   className="object-cover object-contain w-full h-full"
                 />
               </div>

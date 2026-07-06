@@ -327,7 +327,7 @@ function AccordionItem({
 export default function HamburgerMenuMobile({
   isOpen,
   onClose,
-  logoSrc = "/images/logo.svg",
+  logoSrc = "/images/senuralogo.jpg",
 }: Props) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 
@@ -360,7 +360,7 @@ export default function HamburgerMenuMobile({
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             <div className="flex flex-col min-h-full">
-              <div className="flex items-center justify-between pb--40 bg-raisin-black px--30 py--20">
+              <div className="flex items-center justify-between pb--40 bg-black px--30 py--20">
                 <Link href="/" onClick={onClose}>
                   <SafeImage
                     src={logoSrc}

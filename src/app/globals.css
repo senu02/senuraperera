@@ -288,7 +288,7 @@
   /* padding top */
 
   .pt--250 {
-    @apply pt-[100px] lg:pt-[calc(250/1920*100vw)];
+    @apply pt-[120px] lg:pt-[calc(250/1920*100vw)];
   }
   .pt--200 {
     @apply pt-[100px] lg:pt-[calc(200/1920*100vw)];
