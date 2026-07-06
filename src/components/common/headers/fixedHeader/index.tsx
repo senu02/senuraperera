@@ -27,7 +27,7 @@ export default function FixedHeader({
     { label: "Skills", href: "/skills" },
     { label: "contact", href: "/contact-us" },
   ],
-  logoSrc = "/images/logo/eme-logo.svg",
+  logoSrc = "/images/eme-logo.svg",
   onOpenModal,
 }: Props) {
   const pathname = usePathname();
@@ -106,7 +106,7 @@ export default function FixedHeader({
             aria-label="Toggle menu"
           >
             <img
-              src="/images/logo/hamburgerMenu.svg"
+              src="/images/hamburgerMenu.svg"
               alt="Menu"
               className="w-[31.5px] h-[25px] lg:w-[calc(35/1920*100vw)] lg:h-[calc(25/1920*100vw)]"
             />

@@ -26,7 +26,7 @@ export default function TopHeader({
     { label: "Skills", href: "/skills" },
     { label: "contact", href: "/contact-us" },
   ],
-  logoSrc = "/images/logo/siteLogo.svg",
+  logoSrc = "/images/siteLogo.svg",
 }: Props) {
   const pathname = usePathname();
 
@@ -95,7 +95,7 @@ export default function TopHeader({
             aria-label="Toggle menu"
           >
             <img
-              src="/images/logo/hamburgerMenu.svg"
+              src="/images/hamburgerMenu.svg"
               alt="Menu"
               className="w-[32px] h-[25px] lg:w-[calc(35/1920*100vw)] lg:h-[calc(25/1920*100vw)]"
             />

@@ -327,7 +327,7 @@ function AccordionItem({
 export default function HamburgerMenuMobile({
   isOpen,
   onClose,
-  logoSrc = "/images/logo/logo.svg",
+  logoSrc = "/images/logo.svg",
 }: Props) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
 

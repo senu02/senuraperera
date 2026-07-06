@@ -205,7 +205,7 @@ const itemVariants = {
 export default function HamburgerMenu({
   isOpen,
   onClose,
-  logoSrc = "/images/logo/logoeme.svg",
+  logoSrc = "/images/logoeme.svg",
 }: Props) {
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
