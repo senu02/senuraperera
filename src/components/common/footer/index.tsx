@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import SafeImage from "@/components/common/safeImage";
 
 type NavItem = {
   label: string;
@@ -21,6 +21,8 @@ type SocialLink = {
     | "whatsapp";
   url: string;
 };
+
+/* ---------------- Icons (unchanged from your original) ---------------- */
 
 const FacebookIcon = () => (
   <svg
@@ -112,11 +114,27 @@ const YoutubeIcon = () => (
   </svg>
 );
 
+const XIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="19"
+    height="18"
+    viewBox="0 0 19 18"
+    fill="none"
+  >
+    <path
+      d="M14.7137 0H17.5321L11.3452 7.14286L18.625 17H12.9018L8.40625 11.0179L3.26786 17H0.446429L7.06696 9.35714L0.089286 0H5.95536L10.0179 5.44643L14.7137 0ZM13.7232 15.2857H15.2946L5.06696 1.625H3.37946L13.7232 15.2857Z"
+      fill="white"
+    />
+  </svg>
+);
+
 const socialIconMap: Record<string, React.ReactNode> = {
   facebook: <FacebookIcon />,
   instagram: <InstagramIcon />,
   youtube: <YoutubeIcon />,
   linkedin: <LinkedinIcon />,
+  xtwitter: <XIcon />,
 };
 
 const SocialCircle = ({
@@ -130,43 +148,83 @@ const SocialCircle = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    whileHover={{ scale: 1.1 }}
+    whileHover={{ scale: 1.08 }}
     whileTap={{ scale: 0.95 }}
     transition={{ duration: 0.2 }}
-    className="relative flex items-center justify-center w-[38px] h-[38px] md:w-[45px] md:h-[45px]"
+    className="group relative flex items-center justify-center w-[40px] h-[40px] md:w-[46px] md:h-[46px] shrink-0"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="45"
-      height="45"
       viewBox="0 0 55 55"
       fill="none"
       className="absolute inset-0 w-full h-full"
     >
-      <circle opacity="0.3" cx="27.5" cy="27.5" r="27" stroke="#DDDDDD" />
+      <circle
+        opacity="0.3"
+        cx="27.5"
+        cy="27.5"
+        r="27"
+        stroke="#DDDDDD"
+        className="transition-opacity duration-200 group-hover:opacity-70"
+      />
     </svg>
-    <span className="relative z-10 flex items-center justify-center scale-[0.7] md:scale-[0.85]">
+    <span className="relative z-10 flex items-center justify-center scale-[0.72] md:scale-[0.85]">
       {children}
     </span>
   </motion.a>
 );
 
-// Static content — edit these values directly
-const defaultNavItems: NavItem[] = [
+const FooterLink = ({ href, label }: { href: string; label: string }) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <motion.div
+      initial="initial"
+      whileHover="hover"
+      className="relative inline-block w-fit"
+    >
+      <Link
+        href={href}
+        className={`text--18 font-light tracking-wide transition-opacity duration-200 ${
+          isActive
+            ? "text-white opacity-100"
+            : "text-gray-300 opacity-100 hover:opacity-100"
+        }`}
+      >
+        {label}
+      </Link>
+      {isActive ? (
+        <div className="absolute bottom-1 left-0 h-[1px] bg-white w-full" />
+      ) : (
+        <motion.div
+          className="absolute bottom-1 left-0 h-[1px] bg-white"
+          variants={{ initial: { width: 0 }, hover: { width: "100%" } }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        />
+      )}
+    </motion.div>
+  );
+};
+
+/* ---------------- Static content — edit these values directly ---------------- */
+
+const quickLinks: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about-us" },
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+  { label: "Skills", href: "/skills" },
   { label: "Contact", href: "/contact-us" },
 ];
 
-const defaultSocialLinks: SocialLink[] = [
+const socialLinks: SocialLink[] = [
   { service: "linkedin", url: "https://linkedin.com/in/your-profile" },
   { service: "instagram", url: "https://instagram.com/your-profile" },
   { service: "youtube", url: "https://youtube.com/@your-channel" },
+  { service: "xtwitter", url: "https://x.com/your-profile" },
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
   const [email, setEmail] = useState("");
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -177,104 +235,133 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white relative">
-      <div className="container--80 pt--60 pb--40">
-        {/* social icons */}
-        <div className="flex space--15 items-center justify-center md:justify-start mb-[40px]">
-          {defaultSocialLinks.map((social) => {
-            const icon = socialIconMap[social.service];
-            if (!icon) return null;
-            return (
-              <SocialCircle key={social.service} href={social.url}>
-                {icon}
-              </SocialCircle>
-            );
-          })}
-        </div>
-
-        {/* nav links */}
-        <nav className="flex flex-wrap justify-center md:justify-start space--10 mb-[40px]">
-          {defaultNavItems.map((item, index) => (
-            <div key={item.href} className="flex items-center space--10">
-              {index > 0 && <span className="text-white/40 text--14">/</span>}
-              <Link
-                href={item.href}
-                className={`text--14 tracking-widest uppercase transition-colors duration-200 hover:text-blue-500 ${
-                  pathname === item.href
-                    ? "font-semibold text-white"
-                    : "font-light text-gray-300"
-                }`}
-              >
-                {item.label}
-              </Link>
-            </div>
-          ))}
-        </nav>
-
-        {/* logo + contact */}
-        <div className="flex flex-col items-center md:items-start space--20 mb-[40px]">
-          <Link href="/" className="text--22 font-semibold">
-            Senura Perera
-          </Link>
-
-          <div className="flex flex-col md:flex-row md:items-center gap-[8px] md:gap-[24px] text-center md:text-left">
-            <a
-              href="mailto:youremail@example.com"
-              className="text--16 text-gray-300 hover:text-blue-500 transition-colors duration-200"
+      <div className="container--80 pb--20">
+        {/* Top grid: brand / quick links / get in touch / follow me */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 space-y-8 md:space-y-0">
+          {/* Brand + intro */}
+          <div className="flex flex-col  lg:col-span-1 items-center lg:items-start text-center lg:text-left">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+              className="w-fit"
             >
-              youremail@example.com
-            </a>
-            <a
-              href="tel:+94000000000"
-              className="text--16 text-gray-300 hover:text-blue-500 transition-colors duration-200"
-            >
-              +94 00 000 0000
-            </a>
-          </div>
-        </div>
-
-        {/* newsletter (static — no backend call) */}
-        <div className="flex flex-col items-center md:items-start mb-[40px]">
-          <p className="text--16 font-medium text-white mb-[10px]">
-            Subscribe to updates
-          </p>
-          <form
-            onSubmit={handleNewsletterSubmit}
-            className="flex items-center border border-white/20 rounded-[10px] max-w-[380px] w-full"
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Email"
-              className="flex-1 bg-transparent text--16 text-white placeholder-gray-500 px--16 py--12 outline-none"
-            />
-            <button
-              type="submit"
-              className="px--16 py--12 text-white hover:text-blue-500 transition-colors duration-200"
-              aria-label="Subscribe"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="20"
-                viewBox="0 0 20 22"
-                fill="none"
-              >
-                <path
-                  d="M8.97008 0L7.15553 1.85591L14.4137 9.27957L0 9.35712L0 12.0084L14.4137 11.9309L7.15553 19.3545L8.97008 21.2104L19.3389 10.6052L8.97008 0Z"
-                  fill="currentColor"
+              <Link href="/" title="Senura Perera" className="inline-flex">
+                <SafeImage
+                  src="/images/senuralogo.jpg"
+                  alt="Senura Perera"
+                  width={157}
+                  height={44}
+                  className="w-[120px] h-[50px] lg:w-[calc(120/1920*100vw)] lg:h-[calc(50/1920*100vw)]"
                 />
-              </svg>
-            </button>
-          </form>
+              </Link>
+            </motion.div>
+            <p className="hidden md:block text--14 font-light text-gray-400 max-w-[280px] leading-relaxed">
+              Building thoughtful digital products, one project at a time.
+            </p>
+          </div>
+
+          {/* Quick links */}
+          <div className="flex flex-col space--20 items-center md:items-start">
+            <p className="hidden md:block text--16 font-semibold tracking-widest uppercase text-white">
+              Quick Links
+            </p>
+            <nav className="flex flex-row flex-wrap justify-center gap-x-[20px] gap-y-[8px] md:flex-col md:flex-nowrap md:justify-start md:gap-0 md:space--5">
+              {quickLinks.map((item) => (
+                <FooterLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                />
+              ))}
+            </nav>
+          </div>
+
+          {/* Get in touch */}
+          <div className="flex flex-col space--20 text-center lg:text-left">
+            <p className="text--16 font-semibold tracking-widest uppercase text-white">
+              Get In Touch
+            </p>
+            <div className="flex flex-col space-y-1 lg:space-y-0">
+              <a
+                href="mailto:dulajperera34senura@gmail.com"
+                className="text--16 font-light text-gray-300 hover:text-blue-500 transition-colors duration-200 break-all"
+              >
+                dulajperera34senura@gmail.com
+              </a>
+              <a
+                href="tel:+94771687613"
+                className="text--16 font-light text-gray-300 hover:text-blue-500 transition-colors duration-200"
+              >
+                +94 77 168 7613
+              </a>
+              <p className="text--16 font-light text-gray-300">
+                Colombo, Sri Lanka
+              </p>
+            </div>
+          </div>
+
+          {/* Follow me */}
+          <div className="flex flex-col space--10 items-center lg:items-start">
+            <p className="text--16 font-semibold tracking-widest uppercase text-white">
+              Follow Me
+            </p>
+            <div className="flex space--15 items-center flex-wrap">
+              {socialLinks.map((social) => {
+                const icon = socialIconMap[social.service];
+                if (!icon) return null;
+                return (
+                  <SocialCircle key={social.service} href={social.url}>
+                    {icon}
+                  </SocialCircle>
+                );
+              })}
+            </div>
+
+            {/* Newsletter (static — no backend call) */}
+            <div className="flex flex-col space--10 pt--10">
+              <p className="text--16 font-light text-gray-400">
+                Subscribe to updates
+              </p>
+              <form
+                onSubmit={handleNewsletterSubmit}
+                className="flex items-center border border-white/20 rounded-[10px] w-full min-w-[300px] focus-within:border-white/40 transition-colors duration-200"
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Email"
+                  className="flex-1 min-w-0 bg-transparent text--14 text-white placeholder-gray-500 px--10 py--10 outline-none"
+                />
+                <button
+                  type="submit"
+                  className="px--10 py--10 text-white hover:text-blue-500 transition-colors duration-200 shrink-0"
+                  aria-label="Subscribe"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="18"
+                    viewBox="0 0 20 22"
+                    fill="none"
+                  >
+                    <path
+                      d="M8.97008 0L7.15553 1.85591L14.4137 9.27957L0 9.35712L0 12.0084L14.4137 11.9309L7.15553 19.3545L8.97008 21.2104L19.3389 10.6052L8.97008 0Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* bottom bar */}
       <div className="border-t border-white/10 container--80">
-        <div className="py--20 flex flex-col  items-center">
-          <p className="text--12 text-gray-400 tracking-wider">
+        <div className="py--20 flex flex-col md:flex-row space-y-2 lg:space-y-0 items-center justify-center md:justify-between text-center md:text-left">
+          <p className="text--14 text-gray-400 tracking-wider">
             © {new Date().getFullYear()} Senura Perera. All rights reserved.
           </p>
         </div>

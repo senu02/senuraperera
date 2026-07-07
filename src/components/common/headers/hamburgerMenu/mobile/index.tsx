@@ -20,56 +20,11 @@ type Props = {
 };
 
 const navGroups: NavGroup[] = [
-  {
-    label: "Digital",
-    items: [
-      { label: "Search Engine Optimization (SEO)", href: "/digital/seo" },
-      { label: "Local Search Optimization", href: "/digital/local-seo" },
-      { label: "Pay Per Click (PPC) Marketing", href: "/digital/ppc" },
-      { label: "Metasearch Marketing", href: "/digital/metasearch" },
-      { label: "Yandex Advertising", href: "/digital/yandex" },
-      { label: "Social Media Management", href: "/digital/smm" },
-      { label: "Social Media Advertising", href: "/digital/social-ads" },
-      { label: "Content Development", href: "/digital/content" },
-      { label: "Blog Content Management", href: "/digital/blog" },
-      { label: "Web Analytics", href: "/digital/analytics" },
-      { label: "Digital Marketing Consultancy", href: "/digital/consultancy" },
-    ],
-  },
-  {
-    label: "Web",
-    items: [
-      { label: "App Development", href: "/web/app" },
-      { label: "Hotel Factsheet Development", href: "/web/factsheet" },
-      { label: "Web Hosting", href: "/web/hosting" },
-    ],
-  },
-  {
-    label: "Products",
-    items: [
-      { label: "BookingEye", href: "/products/bookingeye" },
-      { label: "PaymentsEye", href: "/products/paymentseye" },
-      { label: "RestaurantsEye", href: "/products/restaurantseye" },
-      { label: "GiftsEye", href: "/products/giftseye" },
-    ],
-  },
-  {
-    label: "About Us",
-    items: [
-      { label: "Our Story", href: "/about-us" },
-      { label: "Executive Team", href: "/about-us/executive-team" },
-      { label: "Our Portfolio", href: "/about-us/portfolio" },
-      { label: "Partnerships & Certifications", href: "/about-us/memberships" },
-      { label: "EME Academy", href: "/academy" },
-      { label: "Webinars", href: "/webinars" },
-      { label: "Awards & Accolades", href: "/about-us/awards" },
-      { label: "News & Events", href: "/news" },
-    ],
-  },
-  { label: "Careers", href: "/careers" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Testimonials", href: "/reviews" },
-  { label: "Contact Us", href: "/contact-us" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about-us" },
+  { label: "Projects", href: "/projects" },
+  { label: "Skills", href: "/skills" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 const FacebookIcon = () => (
@@ -276,7 +231,7 @@ function AccordionItem({
         <Link
           href={group.href!}
           onClick={onClose}
-          className="flex items-center py--10 text--20 font-medium text-gray-800 hover:text-blue-green transition-colors duration-200"
+          className="flex items-center py--5 text--28 font-medium text-gray-800 hover:text-blue-green transition-colors duration-200"
         >
           {group.label}
         </Link>

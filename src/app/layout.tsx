@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className={`${jost.variable} ${oswald.variable} antialiased`}>
         <HeaderClient />
         <PageScrollWrapper>{children}</PageScrollWrapper>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
