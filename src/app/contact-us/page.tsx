@@ -38,7 +38,7 @@ const contactMethods = [
     icon: LinkedinIcon,
     label: "LinkedIn",
     value: "Senura Perera",
-    href: "https://www.linkedin.com/in/senura-perera",
+    href: "https://www.linkedin.com/in/senura-perera-21b26b33a",
   },
 ];
 
@@ -91,9 +91,7 @@ export default function ContactPage() {
           <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
             Contact
           </p>
-          <h1 className="text--48 font-bold leading-tight ">
-            Get In Touch
-          </h1>
+          <h1 className="text--48 font-bold leading-tight ">Get In Touch</h1>
           <p className="text--18 text-gray-300 max-w-[650px]">
             Whether it's a project idea, a job opportunity, or just a quick
             hello — reach out through any of the channels below, or send me a
@@ -101,7 +99,7 @@ export default function ContactPage() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 space--60 mx-auto items-center justify-center">
+        <div className="flex flex-col lg:flex-row space--150 mx-auto items-center justify-center">
           {/* left: contact methods */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -121,7 +119,7 @@ export default function ContactPage() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group flex items-center space--20 py--20 px--20 rounded-[18px] border w-[300px] md:w-[300px] lg:w-[400px] border-white/10 bg-white/5 backdrop-blur-sm hover:border-blue-500/40 hover:bg-white/[0.07] transition-colors"
+                  className="group flex items-center space--20 py--20 px--20 rounded-[18px] border w-[300px] md:w-[300px] lg:w-[350px] border-white/10 bg-white/5 backdrop-blur-sm hover:border-blue-500/40 hover:bg-white/[0.07] transition-colors"
                 >
                   <div className="flex items-center justify-center w-[50px] h-[50px] rounded-[14px] bg-blue-600/15 border border-blue-500/20 group-hover:bg-blue-600/25 transition-colors shrink-0">
                     <Icon className="w-[22px] h-[22px] text-blue-400" />
@@ -138,7 +136,6 @@ export default function ContactPage() {
               );
             })}
           </motion.div>
-
           {/* right: send message form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -146,16 +143,16 @@ export default function ContactPage() {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="px--40 py--40 rounded-[24px] border border-white/10 bg-white/5 backdrop-blur-sm"
           >
-            <h2 className="text--26 font-semibold mb-[6px]">
+            <h2 className="text--26 font-semibold space--10">
               Send Me a Message
             </h2>
-            <p className="text--15 text-gray-400 mb-[30px]">
+            <p className="text--15 text-gray-400 pt--10 pb--30">
               Fill out the form and it'll open in your email app, ready to send.
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col space--20">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[20px]">
-                <div className="flex flex-col gap-[8px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 space--25">
+                <div className="flex flex-col space--10">
                   <label htmlFor="name" className="text--14 text-gray-400">
                     Your Name
                   </label>
@@ -171,7 +168,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <div className="flex flex-col gap-[8px]">
+                <div className="flex flex-col space--10">
                   <label htmlFor="email" className="text--14 text-gray-400">
                     Your Email
                   </label>
@@ -188,7 +185,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-[8px]">
+              <div className="flex flex-col space--10">
                 <label htmlFor="subject" className="text--14 text-gray-400">
                   Subject
                 </label>
@@ -203,7 +200,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div className="flex flex-col gap-[8px]">
+              <div className="flex flex-col space--10">
                 <label htmlFor="message" className="text--14 text-gray-400">
                   Message
                 </label>
@@ -221,7 +218,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="group inline-flex items-center justify-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition self-start"
+                className="group inline-flex items-center justify-center space--15 px--20 py--10 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition self-start"
               >
                 Send Message
                 <Send className="w-[16px] h-[16px] transition-transform group-hover:translate-x-1" />

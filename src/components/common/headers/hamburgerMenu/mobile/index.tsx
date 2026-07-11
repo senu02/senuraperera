@@ -20,11 +20,11 @@ type Props = {
 };
 
 const navGroups: NavGroup[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about-us" },
+  { label: "Home", href: "" },
+  // { label: "About", href: "/about-us" },
   { label: "Projects", href: "/projects" },
-  { label: "Skills", href: "/skills" },
-  { label: "Contact", href: "/contact-us" },
+  // { label: "Skills", href: "/skills" },
+  { label: "contact", href: "/contact-us" },
 ];
 
 const FacebookIcon = () => (

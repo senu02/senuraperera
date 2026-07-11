@@ -876,7 +876,7 @@
   }
 
   .space--25 {
-    @apply gap-[20px] md:gap-[20px] lg:gap-[calc(20/1920*100vw)];
+    @apply gap-[25px] md:gap-[20px] lg:gap-[calc(20/1920*100vw)];
   }
 
   .space--20 {
@@ -884,7 +884,7 @@
   }
 
   .space--15 {
-    @apply gap-[10px] md:gap-[10px] lg:gap-[calc(15/1920*100vw)];
+    @apply gap-[15px] md:gap-[10px] lg:gap-[calc(15/1920*100vw)];
   }
 
   .gap--5 {
@@ -892,7 +892,7 @@
   }
 
   .space--10 {
-    @apply gap-[7px] md:gap-[8px] lg:gap-[calc(10/1920*100vw)];
+    @apply gap-[10px] md:gap-[8px] lg:gap-[calc(10/1920*100vw)];
   }
   .space--20 {
     @apply gap-[7px] md:gap-[8px] lg:gap-[calc(20/1920*100vw)];

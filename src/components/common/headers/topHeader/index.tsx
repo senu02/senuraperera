@@ -20,10 +20,10 @@ type Props = {
 export default function TopHeader({
   toggleSideMenu = () => {},
   navigation = [
-    { label: "Home", href: "" },
-    { label: "About", href: "/about-us" },
+    { label: "Home", href: "/" },
+    // { label: "About", href: "/about-us" },
     { label: "Projects", href: "/projects" },
-    { label: "Skills", href: "/skills" },
+    // { label: "Skills", href: "/skills" },
     { label: "contact", href: "/contact-us" },
   ],
   logoSrc = "/images/senuralogo.jpg",

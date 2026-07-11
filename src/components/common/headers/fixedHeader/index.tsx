@@ -21,10 +21,10 @@ type Props = {
 export default function FixedHeader({
   toggleSideMenu = () => {},
   navigation = [
-    { label: "Home", href: "" },
-    { label: "About", href: "/about-us" },
+    { label: "Home", href: "/" },
+    // { label: "About", href: "/about-us" },
     { label: "Projects", href: "/projects" },
-    { label: "Skills", href: "/skills" },
+    // { label: "Skills", href: "/skills" },
     { label: "contact", href: "/contact-us" },
   ],
   logoSrc = "/images/senuralogo.jpg",
@@ -63,10 +63,10 @@ export default function FixedHeader({
               >
                 <Link
                   href={item.href}
-                  className={`text-white text--15 font-medium tracking-widest uppercase transition-opacity duration-200 ${
+                  className={`text-white text--15 font-medium tracking-widest uppercase transition-colors duration-300 ${
                     pathname === item.href
                       ? "opacity-100"
-                      : "opacity-100 hover:text-strong-orange"
+                      : "opacity-100 hover:text-strong-orange transition-all duration-300"
                   }`}
                 >
                   {item.label}
