@@ -211,9 +211,9 @@ const FooterLink = ({ href, label }: { href: string; label: string }) => {
 
 const quickLinks: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about-us" },
+  // { label: "About", href: "/about-us" },
   { label: "Projects", href: "/projects" },
-  { label: "Skills", href: "/skills" },
+  // { label: "Skills", href: "/skills" },
   { label: "Contact", href: "/contact-us" },
 ];
 

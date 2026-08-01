@@ -48,7 +48,7 @@ export const projects: Project[] = [
     title: "Learn Lab: SkillShare Platform",
     description:
       "A collaborative web-based platform designed for users to share and track skills with peers.",
-    image: "/images/learnlab.png",
+    image: "/images/learnlab1.png",
     tags: ["React Js", "Spring Boot", "JavaScript", "Java"],
     type: "Group Project",
     githubUrl: "https://github.com/RavinduThilinaka/Learn-lab.git",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     title: "Mindful Moments: UI/UX Design",
     description:
       "A mobile application concept designed to enhance mental well-being through guided mindfulness and meditation practices.",
-    image: "/images/mindful.png",
+    image: "/images/mindful1.png",
     tags: ["Figma"],
     type: "Individual Project",
   },
