@@ -68,7 +68,7 @@ export const projects: Project[] = [
     title: "Mindful Moments: UI/UX Design",
     description:
       "A mobile application concept designed to enhance mental well-being through guided mindfulness and meditation practices.",
-    image: "/images/projects/mindful-moments.jpg",
+    image: "/images/projects/mindful.png",
     tags: ["Figma"],
     type: "Individual Project",
   },
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     title: "Task Master",
     description:
       "A user-friendly task management mobile application designed to help users efficiently organize and track their daily tasks.",
-    image: "/images/projects/task-master.jpg",
+    image: "/images/projects/taskmaster.png",
     tags: ["Android Studio"],
     type: "Individual Project",
   },
