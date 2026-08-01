@@ -255,7 +255,7 @@ export default function Footer() {
                 />
               </Link>
             </motion.div>
-            <p className="hidden md:block text--16 font-light text-gray-400 max-w-[280px] leading-relaxed">
+            <p className="hidden md:block text--14 font-light text-gray-400 max-w-[280px] leading-relaxed">
               Building thoughtful digital products, one project at a time.
             </p>
           </div>
@@ -319,7 +319,7 @@ export default function Footer() {
 
             {/* Newsletter (static — no backend call) */}
             <div className="flex flex-col space--10 pt--10">
-              <p className="text--18 font-light text-gray-400">
+              <p className="text-center md:text-left text--18 font-light text-gray-400">
                 Subscribe to updates
               </p>
               <form
