@@ -220,8 +220,8 @@ const quickLinks: NavItem[] = [
 const socialLinks: SocialLink[] = [
   { service: "linkedin", url: "https://www.linkedin.com/in/senura-perera-21b26b33a/" },
   { service: "facebook", url: "https://www.facebook.com/dulaj.perera.355?mibextid=wwXIfr&mibextid=wwXIfr" },
-  { service: "youtube", url: "https://youtube.com/@your-channel" },
-  { service: "xtwitter", url: "https://x.com/your-profile" },
+  // { service: "youtube", url: "https://youtube.com/@your-channel" },
+  // { service: "xtwitter", url: "https://x.com/your-profile" },
 ];
 
 export default function Footer() {
@@ -255,14 +255,14 @@ export default function Footer() {
                 />
               </Link>
             </motion.div>
-            <p className="hidden md:block text--14 font-light text-gray-400 max-w-[280px] leading-relaxed">
+            <p className="hidden md:block text--16 font-light text-gray-400 max-w-[280px] leading-relaxed">
               Building thoughtful digital products, one project at a time.
             </p>
           </div>
 
           {/* Quick links */}
           <div className="flex flex-col space--20 items-center md:items-start">
-            <p className="hidden md:block text--16 font-semibold tracking-widest uppercase text-white">
+            <p className="hidden md:block text--18 font-semibold tracking-widest uppercase text-white">
               Quick Links
             </p>
             <nav className="flex flex-row flex-wrap justify-center gap-x-[20px] gap-y-[8px] md:flex-col md:flex-nowrap md:justify-start md:gap-0 md:space--5">
@@ -278,23 +278,23 @@ export default function Footer() {
 
           {/* Get in touch */}
           <div className="flex flex-col space--20 text-center lg:text-left">
-            <p className="text--16 font-semibold tracking-widest uppercase text-white">
+            <p className="text--18 font-semibold tracking-widest uppercase text-white">
               Get In Touch
             </p>
             <div className="flex flex-col space-y-1 lg:space-y-0">
               <a
                 href="mailto:dulajperera34senura@gmail.com"
-                className="text--16 font-light text-gray-300 hover:text-blue-500 transition-colors duration-200 break-all"
+                className="text--18 font-light text-gray-300 hover:text-blue-500 transition-colors duration-200 break-all"
               >
                 dulajperera34senura@gmail.com
               </a>
               <a
                 href="tel:+94771687613"
-                className="text--16 font-light text-gray-300 hover:text-blue-500 transition-colors duration-200"
+                className="text--18 font-light text-gray-300 hover:text-blue-500 transition-colors duration-200"
               >
                 +94 77 168 7613
               </a>
-              <p className="text--16 font-light text-gray-300">
+              <p className="text--18 font-light text-gray-300">
                 Colombo, Sri Lanka
               </p>
             </div>
@@ -302,7 +302,7 @@ export default function Footer() {
 
           {/* Follow me */}
           <div className="flex flex-col space--10 items-center lg:items-start">
-            <p className="text--16 font-semibold tracking-widest uppercase text-white">
+            <p className="text--18 font-semibold tracking-widest uppercase text-white">
               Follow Me
             </p>
             <div className="flex space--15 items-center flex-wrap">
@@ -319,7 +319,7 @@ export default function Footer() {
 
             {/* Newsletter (static — no backend call) */}
             <div className="flex flex-col space--10 pt--10">
-              <p className="text--16 font-light text-gray-400">
+              <p className="text--18 font-light text-gray-400">
                 Subscribe to updates
               </p>
               <form
@@ -332,7 +332,7 @@ export default function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Email"
-                  className="flex-1 min-w-0 bg-transparent text--14 text-white placeholder-gray-500 px--10 py--10 outline-none"
+                  className="flex-1 min-w-0 bg-transparent text--16 text-white placeholder-gray-500 px--10 py--10 outline-none"
                 />
                 <button
                   type="submit"
@@ -361,7 +361,7 @@ export default function Footer() {
       {/* bottom bar */}
       <div className="border-t border-white/10 container--80">
         <div className="py--20 flex flex-col md:flex-row space-y-2 lg:space-y-0 items-center justify-center md:justify-between text-center md:text-left">
-          <p className="text--14 text-gray-400 tracking-wider">
+          <p className="text--16 text-gray-400 tracking-wider">
             © {new Date().getFullYear()} Senura Perera. All rights reserved.
           </p>
         </div>
