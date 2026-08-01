@@ -218,8 +218,8 @@ const quickLinks: NavItem[] = [
 ];
 
 const socialLinks: SocialLink[] = [
-  { service: "linkedin", url: "https://linkedin.com/in/your-profile" },
-  { service: "instagram", url: "https://instagram.com/your-profile" },
+  { service: "linkedin", url: "https://www.linkedin.com/in/senura-perera-21b26b33a/" },
+  { service: "facebook", url: "https://www.facebook.com/dulaj.perera.355?mibextid=wwXIfr&mibextid=wwXIfr" },
   { service: "youtube", url: "https://youtube.com/@your-channel" },
   { service: "xtwitter", url: "https://x.com/your-profile" },
 ];
