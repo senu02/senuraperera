@@ -48,7 +48,7 @@ export const projects: Project[] = [
     title: "Learn Lab: SkillShare Platform",
     description:
       "A collaborative web-based platform designed for users to share and track skills with peers.",
-    image: "/images/projects/learn-lab.jpg",
+    image: "/images/learnlab.png",
     tags: ["React Js", "Spring Boot", "JavaScript", "Java"],
     type: "Group Project",
     githubUrl: "https://github.com/RavinduThilinaka/Learn-lab.git",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: "Festivo: Event Planning Website",
     description:
       "A website built for seamless event planning and management, from scheduling to guest coordination.",
-    image: "/images/projects/festivo.jpg",
+    image: "/images/festivo.jpg",
     tags: ["React Js", "HTML", "CSS", "JavaScript", "Tailwind CSS"],
     type: "Group Project",
     githubUrl: "https://github.com/senu02/EventPlan.git",
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     title: "Mindful Moments: UI/UX Design",
     description:
       "A mobile application concept designed to enhance mental well-being through guided mindfulness and meditation practices.",
-    image: "/images/projects/mindful.png",
+    image: "/images/mindful.png",
     tags: ["Figma"],
     type: "Individual Project",
   },
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     title: "Task Master",
     description:
       "A user-friendly task management mobile application designed to help users efficiently organize and track their daily tasks.",
-    image: "/images/projects/taskmaster.png",
+    image: "/images/task.png",
     tags: ["Android Studio"],
     type: "Individual Project",
   },
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     title: "Note Master",
     description:
       "A mobile application that enables users to create, view, update, and delete personal notes.",
-    image: "/images/projects/note-master.jpg",
+    image: "/images/taskmaster1.png",
     tags: ["Android Studio", "SQLite"],
     type: "Individual Project",
   },
