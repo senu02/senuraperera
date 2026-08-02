@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: "Festivo: Event Planning Website",
     description:
       "A website built for seamless event planning and management, from scheduling to guest coordination.",
-    image: "/images/festivo.jpg",
+    image: "/images/festivo.png",
     tags: ["React Js", "HTML", "CSS", "JavaScript", "Tailwind CSS"],
     type: "Group Project",
     githubUrl: "https://github.com/senu02/EventPlan.git",

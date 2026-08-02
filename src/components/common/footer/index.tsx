@@ -129,12 +129,28 @@ const XIcon = () => (
   </svg>
 );
 
+const WhatsappIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+  >
+    <path
+      d="M10.0059 0C4.48328 0 0 4.48287 0 10.0059C0 11.8093 0.480906 13.5613 1.39332 15.0968L0.0292969 20L5.09484 18.6719C6.56977 19.4903 8.26198 19.9235 10.0059 19.9235C15.5285 19.9235 20 15.4406 20 9.91747C20 4.48287 15.5285 0 10.0059 0ZM10.0059 18.2544C8.42504 18.2544 6.87787 17.8228 5.51895 17.0027L5.20281 16.8121L2.27824 17.5891L3.06938 14.7383L2.86 14.4109C1.95164 12.9959 1.47656 11.373 1.47656 9.91747C1.47656 5.19301 5.28137 1.38828 10.0059 1.38828C14.7304 1.38828 18.5352 5.19301 18.5352 9.91747C18.5352 14.6420 14.6512 18.2544 10.0059 18.2544ZM14.6117 12.1218C14.3617 11.9969 13.1211 11.3898 12.8898 11.3061C12.6586 11.2223 12.4906 11.1804 12.3226 11.4304C12.1546 11.6805 11.6708 12.2418 11.5215 12.4098C11.3721 12.5778 11.2227 12.5989 10.9727 12.474C10.7227 12.3492 9.90719 12.0813 8.93727 11.2144C8.18016 10.5401 7.66922 9.70582 7.51988 9.45574C7.37055 9.20567 7.5031 9.07027 7.62965 8.94512C7.74371 8.83168 7.87977 8.65008 8.00434 8.50074C8.12891 8.35141 8.17086 8.24273 8.25473 8.07473C8.3386 7.90672 8.29664 7.75738 8.23375 7.63235C8.17086 7.50723 7.6631 6.26449 7.44984 5.75379C7.24246 5.25488 7.03156 5.32234 6.87519 5.31461C6.72703 5.30754 6.55898 5.30605 6.39098 5.30605C6.22297 5.30605 5.95043 5.36863 5.71918 5.61867C5.48793 5.86875 4.87887 6.4344 4.87887 7.67707C4.87887 8.91981 5.7402 10.1207 5.86477 10.2887C5.98934 10.4568 7.66043 13.0225 10.2179 14.1027C10.828 14.3606 11.3033 14.5152 11.6737 14.6309C12.2862 14.8234 12.8438 14.7957 13.2847 14.7301C13.7762 14.6567 14.7996 14.1109 15.0129 13.5285C15.2262 12.9461 15.2262 12.4467 15.1633 12.3438C15.1004 12.2418 14.9367 12.1793 14.6867 12.0543L14.6117 12.1218Z"
+      fill="white"
+    />
+  </svg>
+);
+
 const socialIconMap: Record<string, React.ReactNode> = {
   facebook: <FacebookIcon />,
   instagram: <InstagramIcon />,
   youtube: <YoutubeIcon />,
   linkedin: <LinkedinIcon />,
   xtwitter: <XIcon />,
+  whatsapp: <WhatsappIcon />,
 };
 
 const SocialCircle = ({
@@ -151,7 +167,7 @@ const SocialCircle = ({
     whileHover={{ scale: 1.08 }}
     whileTap={{ scale: 0.95 }}
     transition={{ duration: 0.2 }}
-    className="group relative flex items-center justify-center w-[40px] h-[40px] md:w-[46px] md:h-[46px] shrink-0"
+    className="group relative flex items-center justify-center w-[40px] h-[40px] md:w-[40px] md:h-[40px] shrink-0"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -218,8 +234,16 @@ const quickLinks: NavItem[] = [
 ];
 
 const socialLinks: SocialLink[] = [
-  { service: "linkedin", url: "https://www.linkedin.com/in/senura-perera-21b26b33a/" },
-  { service: "facebook", url: "https://www.facebook.com/dulaj.perera.355?mibextid=wwXIfr&mibextid=wwXIfr" },
+  {
+    service: "linkedin",
+    url: "https://www.linkedin.com/in/senura-perera-21b26b33a/",
+  },
+  {
+    service: "facebook",
+    url: "https://www.facebook.com/dulaj.perera.355?mibextid=wwXIfr&mibextid=wwXIfr",
+  },
+  { service: "whatsapp", url: "https://wa.me/94771687613" },
+
   // { service: "youtube", url: "https://youtube.com/@your-channel" },
   // { service: "xtwitter", url: "https://x.com/your-profile" },
 ];

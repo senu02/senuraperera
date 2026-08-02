@@ -785,12 +785,12 @@
   }
 
   .text--20 {
-    @apply text-[16px] md:text-[18px] lg:text-[calc(20/1920*100vw)];
+    @apply text-[16px] md:text-[20px] lg:text-[calc(20/1920*100vw)];
     @apply leading-[28px] md:leading-[30px] lg:leading-[calc(35/1920*100vw)];
   }
 
   .text--18 {
-    @apply text-[16px] md:text-[16px] lg:text-[calc(18/1920*100vw)];
+    @apply text-[16px] md:text-[18px] lg:text-[calc(18/1920*100vw)];
     @apply leading-[28px] md:leading-[30px] lg:leading-[calc(35/1920*100vw)];
   }
 

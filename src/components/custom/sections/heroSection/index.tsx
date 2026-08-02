@@ -48,11 +48,11 @@ export default function PortfolioHero() {
               transition={{ duration: 0.8, delay: 0.35 }}
               className="text--20 text-gray-300 max-w-[780px]"
             >
-              Passionate about building visually compelling and high-performing
-              digital experiences. I combine clean code with thoughtful design
-              to create modern, user-friendly websites and applications. From
-              frontend development to backend systems and graphic design, I
-              enjoy turning ideas into impactful digital solutions.
+              Full-Stack Web Developer with a strong foundation in React,
+              Next.js, and modern web technologies. I specialize in building
+              clean, responsive, and user-centric applications — combining
+              thoughtful front-end design with reliable, scalable backend
+              systems to deliver seamless digital experiences.
             </motion.p>
 
             <motion.div
