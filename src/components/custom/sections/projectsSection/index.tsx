@@ -26,9 +26,18 @@ export default function Projects() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="flex flex-col items-center text-center space--20 mb-[60px]"
         >
-          <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
-            Projects
-          </p>
+          <div className="flex flex-col items-center gap-[10px]">
+            <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
+              Projects
+            </p>
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: 40 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="h-[2px] bg-blue-500 rounded-full"
+            />
+          </div>
           <h2 className="text--48 font-bold leading-tight max-w-[700px]">
             A few things I've built
           </h2>
@@ -36,10 +45,23 @@ export default function Projects() {
             A selection of projects that showcase my approach to solving
             problems through clean code and thoughtful design.
           </p>
+{/* 
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
+            className="inline-flex items-center gap-[8px] px--16 py--6 rounded-full border border-white/10 bg-white/5"
+          >
+            <span className="w-[6px] h-[6px] rounded-full bg-blue-500" />
+            <span className="text--13 text-gray-400">
+              {featuredProjects.length} selected works
+            </span>
+          </motion.div> */}
         </motion.div>
 
         {/* projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center items-stretch justify-center space--30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch justify-center space--30">
           {featuredProjects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
@@ -53,13 +75,15 @@ export default function Projects() {
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           className="flex justify-center mt-[60px]"
         >
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-800 transition-colors duration-300"
-          >
-            View All Projects
-            <ArrowRight className="w-[18px] h-[18px] transition-transform group-hover:translate-x-1" />
-          </Link>
+          <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/projects"
+              className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-colors duration-300 shadow-[0_0_0_0_rgba(37,99,235,0.5)] hover:shadow-[0_0_30px_0_rgba(37,99,235,0.45)]"
+            >
+              View All Projects
+              <ArrowRight className="w-[18px] h-[18px] transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

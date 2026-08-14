@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { Code2, Palette, Server, Smartphone } from "lucide-react";
+import type { MouseEvent } from "react";
 
 const services = [
   {
@@ -30,6 +31,55 @@ const services = [
   },
 ];
 
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: (typeof services)[number];
+  index: number;
+}) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  }
+
+  const spotlight = useMotionTemplate`radial-gradient(220px circle at ${mouseX}px ${mouseY}px, rgba(37,99,235,0.28), transparent 75%)`;
+
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+      whileHover={{ y: -8 }}
+      onMouseMove={handleMouseMove}
+      className="group relative flex flex-col space--15 px--30 py--30 rounded-[20px] border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden transition-colors hover:border-blue-500/40 hover:bg-white/[0.07]"
+    >
+      <motion.div
+        aria-hidden
+        style={{ background: spotlight }}
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
+
+      <div className="relative flex items-center justify-center w-[56px] h-[56px] rounded-[14px] bg-blue-600/15 border border-blue-500/20 transition-colors group-hover:bg-blue-600/25">
+        <Icon className="w-[26px] h-[26px] text-blue-400" />
+      </div>
+
+      <h3 className="relative text--22 font-semibold">{service.title}</h3>
+
+      <p className="relative text--16 text-gray-400 leading-relaxed">
+        {service.description}
+      </p>
+    </motion.div>
+  );
+}
+
 export default function WhatIDo() {
   return (
     <section className="relative overflow-hidden bg-black text-white container--80 pb--100">
@@ -48,9 +98,18 @@ export default function WhatIDo() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="flex flex-col items-center text-center space--20 mb-[60px]"
         >
-          <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
-            What I Do
-          </p>
+          <div className="flex flex-col items-center gap-[10px]">
+            <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
+              What I Do
+            </p>
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: 40 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="h-[2px] bg-blue-500 rounded-full"
+            />
+          </div>
           <h2 className="text--48 font-bold leading-tight max-w-[700px]">
             Services I bring to every project
           </h2>
@@ -62,38 +121,9 @@ export default function WhatIDo() {
 
         {/* cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 space--30">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.15,
-                  ease: "easeOut",
-                }}
-                whileHover={{ y: -8 }}
-                className="group relative flex flex-col space--15 px--30 py--30 rounded-[20px] border border-white/10 bg-white/5 backdrop-blur-sm hover:border-blue-500/40 hover:bg-white/[0.07] transition-colors"
-              >
-                <div className="absolute inset-0 rounded-[20px]  opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_30%_20%,rgba(37,99,235,0.25),transparent_60%)] pointer-events-none" />
-
-                <div className="relative flex items-center justify-center w-[56px] h-[56px] rounded-[14px] bg-blue-600/15 border border-blue-500/20 group-hover:bg-blue-600/25 transition-colors">
-                  <Icon className="w-[26px] h-[26px] text-blue-400" />
-                </div>
-
-                <h3 className="relative text--22 font-semibold">
-                  {service.title}
-                </h3>
-
-                <p className="relative text--16 text-gray-400 leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} service={service} index={index} />
+          ))}
         </div>
       </div>
     </section>

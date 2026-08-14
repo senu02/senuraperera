@@ -260,7 +260,7 @@ export default function HamburgerMenu({
                 </Link>
                 <button
                   onClick={onClose}
-                  className="cursor-pointer text-gray-800 hover:text-strong-orange transition-colors duration-200"
+                  className="cursor-pointer text-gray-800 hover:text-blue-500 transition-colors duration-200"
                   aria-label="Close menu"
                 >
                   <svg
@@ -285,7 +285,7 @@ export default function HamburgerMenu({
                   <motion.div key={group.label} variants={itemVariants}>
                     {/* Group heading with left accent */}
                     <div className="flex items-center space--15 pb--25">
-                      <span className="w-[4px] h-[50px] bg-blue-green flex-shrink-0" />
+                      <span className="w-[4px] h-[50px] bg-blue-500 flex-shrink-0" />
                       <h3 className="text--40 font-medium text-gray-800">
                         {group.label}
                       </h3>
@@ -297,7 +297,7 @@ export default function HamburgerMenu({
                           <Link
                             href={item.href}
                             onClick={onClose}
-                            className="text--18 text-dark-gray hover:text-blue-green transition-colors duration-200 leading-snug"
+                            className="text--18 text-dark-gray hover:text-blue-500 transition-colors duration-200 leading-snug"
                           >
                             {item.label}
                           </Link>
@@ -322,7 +322,7 @@ export default function HamburgerMenu({
                       <Link
                         href={link.href}
                         onClick={onClose}
-                        className="text--18 text-dark-gray hover:text-blue-green transition-colors duration-200"
+                        className="text--18 text-dark-gray hover:text-blue-500 transition-colors duration-200"
                       >
                         {link.label}
                       </Link>

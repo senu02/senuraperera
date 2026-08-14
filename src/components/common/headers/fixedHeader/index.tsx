@@ -66,7 +66,7 @@ export default function FixedHeader({
                   className={`text-white text--15 font-medium tracking-widest uppercase transition-colors duration-300 ${
                     pathname === item.href
                       ? "opacity-100"
-                      : "opacity-100 hover:text-strong-orange transition-all duration-300"
+                      : "opacity-100 hover:text-blue-500 transition-all duration-300"
                   }`}
                 >
                   {item.label}

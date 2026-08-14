@@ -67,6 +67,7 @@ export default function Contact() {
       </div>
 
       <div className="relative z-10">
+        {/* heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,9 +75,18 @@ export default function Contact() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="flex flex-col items-center text-center space--20 pb--40"
         >
-          <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
-            Contact
-          </p>
+          <div className="flex flex-col items-center gap-[10px]">
+            <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
+              Contact
+            </p>
+            <motion.span
+              initial={{ width: 0 }}
+              whileInView={{ width: 40 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="h-[2px] bg-blue-500 rounded-full"
+            />
+          </div>
           <h2 className="text--48 font-bold leading-tight max-w-[700px]">
             Let's build something together
           </h2>
@@ -86,68 +96,103 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* <motion.div
+        {/* card */}
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-          className="relative flex flex-col items-center rounded-[24px] border border-white/10 bg-white/5 backdrop-blur-sm max-w-[900px] mx-auto"
-        > */}
-        {/* contact details */}
-        {/* <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 space--30 px--40 py--40 w-full">
-            {contactDetails.map((detail) => {
-              const Icon = detail.icon;
-              const Wrapper = detail.href ? "a" : "div";
-              return (
-                <Wrapper
-                  key={detail.label}
-                  {...(detail.href ? { href: detail.href } : {})}
-                  className="group flex flex-col items-center text-center space--15 py--20  rounded-[16px] border border-white/10 bg-white/[0.03] hover:border-blue-500/40 hover:bg-white/[0.06] transition-colors"
-                >
-                  <div className="flex items-center justify-center w-[48px] h-[48px] rounded-[14px] bg-blue-600/15 border border-blue-500/20 group-hover:bg-blue-600/25 transition-colors">
-                    <Icon className="w-[20px] h-[20px] text-blue-400" />
-                  </div>
-                  <p className="text--13 uppercase tracking-[0.15em] text-gray-500">
-                    {detail.label}
-                  </p>
-                  <p className="text--15 text-gray-300 break-all">
-                    {detail.value}
-                  </p>
-                </Wrapper>
-              );
-            })}
-          </div> */}
+          className="relative max-w-[900px] mx-auto"
+        >
+          {/* animated glow ring, echoes the hero's signature ring */}
+          <motion.div
+            aria-hidden
+            animate={{ opacity: [0.25, 0.55, 0.25] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -inset-[1px] rounded-[26px] pointer-events-none blur-[2px] [background:conic-gradient(from_0deg,rgba(37,99,235,0.5),transparent_40%,transparent_60%,rgba(56,189,248,0.5))]"
+          />
 
-        {/* social links */}
-        {/* <div className="flex items-center space--25 pb--40">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="flex items-center justify-center w-[44px] h-[44px] rounded-full border border-white/10 bg-white/5 hover:border-blue-500/40 hover:bg-blue-600/15 transition-colors"
-                >
-                  <Icon className="w-[20px] h-[20px] text-gray-300" />
-                </a>
-              );
-            })}
-          </div> */}
+          <div className="relative flex flex-col items-center rounded-[24px] border border-white/10 bg-white/[0.04] backdrop-blur-sm overflow-hidden">
+            {/* contact details */}
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 space--30 px--40 py--40 w-full">
+              {contactDetails.map((detail, index) => {
+                const Icon = detail.icon;
+                const Wrapper = detail.href ? "a" : "div";
+                return (
+                  <motion.div
+                    key={detail.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.1,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <Wrapper
+                      {...(detail.href ? { href: detail.href } : {})}
+                      className="group flex flex-col items-center text-center space--15 py--25 rounded-[16px] border border-white/10 bg-white/[0.03] hover:border-blue-500/40 hover:bg-white/[0.06] hover:-translate-y-1 transition-all duration-300"
+                    >
+                      <div className="flex items-center justify-center w-[48px] h-[48px] rounded-[14px] bg-blue-600/15 border border-blue-500/20 group-hover:bg-blue-600/25 transition-colors">
+                        <Icon className="w-[20px] h-[20px] text-blue-400" />
+                      </div>
+                      <p className="text--13 uppercase tracking-[0.15em] text-gray-500">
+                        {detail.label}
+                      </p>
+                      <p className="text--15 text-gray-300 break-all">
+                        {detail.value}
+                      </p>
+                    </Wrapper>
+                  </motion.div>
+                );
+              })}
+            </div>
 
-        {/* button to main contact page */}
-        <div className="pb--40 justify-center flex items-center">
-          <Link
-            href="/contact-us"
-            className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition"
-          >
-            Say Hello !
-            <ArrowRight className="w-[18px] h-[18px] transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-        {/* </motion.div> */}
+            <div className="w-full h-px bg-white/10" />
+
+            {/* socials + cta */}
+            <div className="flex flex-col items-center gap-[25px] py--40">
+              <div className="flex items-center space--20">
+                {socialLinks.map((social, index) => {
+                  const Icon = social.icon;
+                  return (
+                    <motion.a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.2 + index * 0.1,
+                        ease: "easeOut",
+                      }}
+                      whileHover={{ y: -4, scale: 1.06 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center justify-center w-[44px] h-[44px] rounded-full border border-white/10 bg-white/5 hover:border-blue-500/40 hover:bg-blue-600/15 transition-colors"
+                    >
+                      <Icon className="w-[20px] h-[20px] text-gray-300" />
+                    </motion.a>
+                  );
+                })}
+              </div>
+
+              <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  href="/contact-us"
+                  className="group inline-flex items-center gap-[10px] px--30 py--15 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition-colors duration-300 shadow-[0_0_0_0_rgba(37,99,235,0.5)] hover:shadow-[0_0_30px_0_rgba(37,99,235,0.45)]"
+                >
+                  Say Hello !
+                  <ArrowRight className="w-[18px] h-[18px] transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

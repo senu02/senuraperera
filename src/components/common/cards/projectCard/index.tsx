@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import type { SVGProps } from "react";
+import type { MouseEvent, SVGProps } from "react";
 import type { Project } from "@/lib/data/projects";
 
 // GitHub isn't reliably exported by lucide-react across versions,
@@ -24,6 +24,17 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const { title, description, image, tags, type, githubUrl, liveUrl } = project;
 
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  }
+
+  const spotlight = useMotionTemplate`radial-gradient(260px circle at ${mouseX}px ${mouseY}px, rgba(37,99,235,0.16), transparent 75%)`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -31,6 +42,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       whileHover={{ y: -8 }}
+      onMouseMove={handleMouseMove}
       className="group relative flex flex-col h-full rounded-[20px] border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden hover:border-blue-500/40 transition-colors"
     >
       {/* image */}
@@ -47,51 +59,74 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           {type}
         </span>
 
+        {/* rank watermark — the number reflects this project's place in the featured list */}
+        <span className="absolute bottom-[10px] right-[16px] text--40 font-bold text-white/10 leading-none select-none pointer-events-none">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
         {/* action icons, shown on hover */}
         <div className="absolute top-[14px] right-[14px] flex items-center gap-[8px] opacity-0 group-hover:opacity-100 transition-opacity">
           {githubUrl && (
-            <a
+            <motion.a
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${title} GitHub repository`}
               onClick={(e) => e.stopPropagation()}
+              whileHover={{ scale: 1.12 }}
+              whileTap={{ scale: 0.94 }}
               className="flex items-center justify-center w-[36px] h-[36px] rounded-full bg-black/70 border border-white/10 hover:bg-blue-600/90 transition-colors"
             >
               <GithubIcon className="w-[16px] h-[16px] text-white" />
-            </a>
+            </motion.a>
           )}
           {liveUrl && (
-            <a
+            <motion.a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${title} live link`}
               onClick={(e) => e.stopPropagation()}
+              whileHover={{ scale: 1.12 }}
+              whileTap={{ scale: 0.94 }}
               className="flex items-center justify-center w-[36px] h-[36px] rounded-full bg-blue-600/90 hover:bg-blue-500 transition-colors"
             >
               <ArrowUpRight className="w-[18px] h-[18px] text-white" />
-            </a>
+            </motion.a>
           )}
         </div>
       </div>
 
       {/* content */}
-      <div className="flex flex-col flex-1 space--15 px--40 py--40">
-        <h3 className="text--22 font-semibold">{title}</h3>
+      <div className="relative flex flex-col flex-1 space--15 px--40 py--40 overflow-hidden">
+        <motion.div
+          aria-hidden
+          style={{ background: spotlight }}
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        />
 
-        <p className="text--16 text-gray-400 leading-relaxed flex-1">
+        <h3 className="relative text--22 font-semibold">{title}</h3>
+
+        <p className="relative text--16 text-gray-400 leading-relaxed flex-1">
           {description}
         </p>
 
-        <div className="flex flex-wrap space--10">
-          {tags.map((tag) => (
-            <span
+        <div className="relative flex flex-wrap space--10">
+          {tags.map((tag, tagIndex) => (
+            <motion.span
               key={tag}
-              className="text--13 px--10 py--5 rounded-full border border-white/10 bg-white/5 text-gray-300"
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1 + tagIndex * 0.05,
+                ease: "easeOut",
+              }}
+              className="text--13 px--10 py--5 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-blue-500/40 hover:text-white transition-colors"
             >
               {tag}
-            </span>
+            </motion.span>
           ))}
         </div>
       </div>

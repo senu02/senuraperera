@@ -24,7 +24,7 @@ const navGroups: NavGroup[] = [
   // { label: "About", href: "/about-us" },
   { label: "Projects", href: "/projects" },
   // { label: "Skills", href: "/skills" },
-  { label: "contact", href: "/contact-us" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 const FacebookIcon = () => (
@@ -231,7 +231,7 @@ function AccordionItem({
         <Link
           href={group.href!}
           onClick={onClose}
-          className="flex items-center py--5 text--28 font-medium text-white hover:text-blue-green transition-colors duration-200"
+          className="flex items-center py--5 text--28 font-medium text-white hover:text-blue-500 transition-colors duration-200"
         >
           {group.label}
         </Link>
@@ -243,7 +243,7 @@ function AccordionItem({
     <div>
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py--10 text--50 font-medium text-gray-800 cursor-pointer hover:text-blue-green transition-colors duration-200"
+        className="w-full flex items-center justify-between py--10 text--50 font-medium text-gray-800 cursor-pointer hover:text-blue-500 transition-colors duration-200"
       >
         <span>{group.label}</span>
         <ChevronIcon open={isOpen} />
@@ -329,7 +329,7 @@ export default function HamburgerMenuMobile({
 
                 <button
                   onClick={onClose}
-                  className="cursor-pointer text-white hover:text-strong-orange transition-colors duration-200"
+                  className="cursor-pointer text-white hover:text-blue-500 transition-colors duration-200"
                   aria-label="Close menu"
                 >
                   <svg
