@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, MessageCircle, Send } from "lucide-react";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { Mail, Phone, MessageCircle, Send, Check } from "lucide-react";
 import type { SVGProps } from "react";
 
 // LinkedIn isn't reliably exported by lucide-react across versions,
@@ -42,6 +42,21 @@ const contactMethods = [
   },
 ];
 
+const containerVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
@@ -49,6 +64,7 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sent">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -69,7 +85,11 @@ export default function ContactPage() {
     const body = encodeURIComponent(
       `${form.message}\n\n— ${form.name} (${form.email})`,
     );
+
+    setStatus("sent");
     window.location.href = `mailto:dulajperera34senura@gmail.com?subject=${subject}&body=${body}`;
+
+    window.setTimeout(() => setStatus("idle"), 2200);
   };
 
   return (
@@ -88,10 +108,18 @@ export default function ContactPage() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="flex flex-col items-center text-center space--20 mb-[70px]"
         >
-          <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
-            Contact
-          </p>
-          <h1 className="text--48 font-bold leading-tight ">Get In Touch</h1>
+          <div className="flex flex-col items-center gap-[10px]">
+            <p className="text--18 uppercase tracking-[0.2em] text-gray-400">
+              Contact
+            </p>
+            <motion.span
+              initial={{ width: 0 }}
+              animate={{ width: 40 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="h-[2px] bg-blue-500 rounded-full"
+            />
+          </div>
+          <h1 className="text--48 font-bold leading-tight">Get In Touch</h1>
           <p className="text--18 text-gray-300 max-w-[650px]">
             Whether it's a project idea, a job opportunity, or just a quick
             hello — reach out through any of the channels below, or send me a
@@ -102,16 +130,18 @@ export default function ContactPage() {
         <div className="flex flex-col lg:flex-row space--150 mx-auto items-center justify-center">
           {/* left: contact methods */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
             className="flex flex-col space--20"
           >
             {contactMethods.map((method) => {
               const Icon = method.icon;
               return (
-                <a
+                <motion.a
                   key={method.label}
+                  variants={itemVariants}
+                  whileHover={{ y: -4 }}
                   href={method.href}
                   target={method.href.startsWith("http") ? "_blank" : undefined}
                   rel={
@@ -132,10 +162,11 @@ export default function ContactPage() {
                       {method.value}
                     </p>
                   </div>
-                </a>
+                </motion.a>
               );
             })}
           </motion.div>
+
           {/* right: send message form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -152,7 +183,7 @@ export default function ContactPage() {
 
             <form onSubmit={handleSubmit} className="flex flex-col space--20">
               <div className="grid grid-cols-1 sm:grid-cols-2 space--25">
-                <div className="flex flex-col space--10">
+                <div className="flex flex-col space--10 rounded-[12px] focus-within:shadow-[0_0_0_3px_rgba(37,99,235,0.25)] transition-shadow duration-300">
                   <label htmlFor="name" className="text--14 text-gray-400">
                     Your Name
                   </label>
@@ -168,7 +199,7 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <div className="flex flex-col space--10">
+                <div className="flex flex-col space--10 rounded-[12px] focus-within:shadow-[0_0_0_3px_rgba(37,99,235,0.25)] transition-shadow duration-300">
                   <label htmlFor="email" className="text--14 text-gray-400">
                     Your Email
                   </label>
@@ -185,7 +216,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col space--10">
+              <div className="flex flex-col space--10 rounded-[12px] focus-within:shadow-[0_0_0_3px_rgba(37,99,235,0.25)] transition-shadow duration-300">
                 <label htmlFor="subject" className="text--14 text-gray-400">
                   Subject
                 </label>
@@ -200,7 +231,7 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div className="flex flex-col space--10">
+              <div className="flex flex-col space--10 rounded-[12px] focus-within:shadow-[0_0_0_3px_rgba(37,99,235,0.25)] transition-shadow duration-300">
                 <label htmlFor="message" className="text--14 text-gray-400">
                   Message
                 </label>
@@ -216,13 +247,41 @@ export default function ContactPage() {
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
-                className="group inline-flex items-center justify-center space--15 px--20 py--10 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition self-start"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                disabled={status === "sent"}
+                className="group relative inline-flex items-center justify-center space--15 px--20 py--10 rounded-[14px] bg-blue-600 text-white font-semibold hover:bg-blue-500 transition self-start overflow-hidden min-w-[190px]"
               >
-                Send Message
-                <Send className="w-[16px] h-[16px] transition-transform group-hover:translate-x-1" />
-              </button>
+                <AnimatePresence mode="wait" initial={false}>
+                  {status === "sent" ? (
+                    <motion.span
+                      key="sent"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                      className="inline-flex items-center space--15"
+                    >
+                      <Check className="w-[16px] h-[16px]" />
+                      Opening your email app…
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="idle"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                      className="inline-flex items-center space--15"
+                    >
+                      Send Message
+                      <Send className="w-[16px] h-[16px] transition-transform group-hover:translate-x-1" />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             </form>
           </motion.div>
         </div>
